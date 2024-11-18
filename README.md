@@ -1,4 +1,4 @@
-# **ClimODE: A Revolution in Climate and Weather Forecasting**  
+# **ClimODE: Climate and Weather Forecasting With Physics-Informed Neural ODEs**  
 
 ###  **Introduction**  
 Weather forecasting plays a vital role in our daily lives, influencing decisions ranging from personal plans to global planning. Whether it's picking the perfect day for a picnic, issuing early warnings for storms and heatwaves, or helping farmers optimize their crops, its applications are virtually limitless.  
@@ -12,7 +12,7 @@ This blog introduces **ClimODE**, a novel climate and weather forecasting model 
 ###  **Deep Learning for Climate and Weather Prediction**  
 
 #### **The Traditional Approach**  
-Weather and climate forecasting has long depended on mathematical models that simulate interactions across the atmosphere, cryosphere, land, and ocean systems. A prominent example is **Numerical Weather Prediction (NWP)**, which uses physics-based equations to predict weather.  
+Weather and climate forecasting has long depended on mathematical models that simulate interactions across the atmosphere, cryosphere, land, and ocean systems. A prominent example is **Numerical Weather Prediction (NWP)**, which uses mathematical models of the atmosphere and oceans to predict weather.  
 
 While NWP is highly accurate, it comes with drawbacks, including:  
 - **High computational cost**, requiring vast resources.  
@@ -38,13 +38,11 @@ To address the drawbacks of traditional methods and existing deep learning appro
 #### **Adhering to Physics**  
 One of the main contributions of ClimODE is its proposal of a continuous real-time advection PDE model. Weather can be conceptualized as a flux—a spatial movement of quantities, such as temperature and wind, over time. ClimODE leverages partial differential equations (PDEs) to model how weather evolves continuously in both time and space. At the core of this approach is advection, a concept from statistical mechanics that describes how weather elements like heat and air masses move across regions. By incorporating advection, ClimODE ensures that its predictions adhere to fundamental physical laws, such as the conservation of mass.
 
-In contrast, traditional methods like Numerical Weather Prediction (NWP) rely on large-scale physics-based simulations that solve PDEs related to atmospheric dynamics. While accurate, these simulations are computationally intensive and resource-heavy. ClimODE simplifies this process by deriving ordinary differential equations (ODEs) that are computationally more efficient while maintaining physical consistency, making ClimODE an innovative and scalable solution for weather forecasting.
+In contrast, traditional methods like Numerical Weather Prediction (NWP) rely on large-scale physics-based simulations that solve PDEs related to atmospheric dynamics. While accurate, these simulations are computationally intensive and resource-heavy. ClimODE simplifies this process by deriving ordinary differential equations (ODEs) that are computationally more efficient while maintaining physical consistency.
  
 
 #### **Flow Velocity Modeling**  
-To model the **speed and direction of flow**, ClimODE integrates:  
-- **Local convolutions** to capture small-scale patterns (e.g., storms, heatwaves).  
-- **Long-range attention mechanisms** to account for global interactions (e.g., Atlantic weather influencing Europe).  
+ClimODE also models the speed and direction of the flow that moves weather variables across the map. The approach combines local convolutions for capturing small-scale weather patterns, such as localized storms or heatwaves, with a long-range attention mechanism to account for how distant weather systems interact. For instance, weather conditions in the Atlantic can significantly influence future patterns in Europe and Africa. 
 
 #### **Handling Uncertainties**  
 Weather systems are inherently uncertain. ClimODE introduces a **Gaussian emission network** to predict uncertainties and source variations. The model initially assumes a closed system, where the total value of weather variables (e.g., temperature) remains constant, meaning no gain or loss occurs. However, in reality, factors such as day-night cycles disrupt this assumption. The paper incorporates an emission model to address this and account for uncertainties in real-world scenarios.
