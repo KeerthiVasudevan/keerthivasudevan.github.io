@@ -8,19 +8,19 @@ Weather forecasting is an essential aspect of modern life, influencing decisions
 
 Traditionally, weather forecasting has been driven by complex physical simulations, which, while accurate, require immense computational resources. In contrast, deep learning models offer a more data-driven approach but often act as black boxes, failing to incorporate fundamental physical laws that govern weather dynamics.
 
-This blog explores **ClimODE**, a novel climate and weather forecasting model that bridges the gap between traditional numerical methods and deep learning. By integrating physics-based constraints with deep learning techniques, ClimODE offers a computationally efficient and physically consistent approach to long-term weather and climate prediction.
+This blog explores **ClimODE**[1](#1), a novel climate and weather forecasting model that bridges the gap between traditional numerical methods and deep learning. By integrating physics-based constraints with deep learning techniques, ClimODE offers a computationally efficient and physically consistent approach to long-term weather and climate prediction.
 
 ## Background and Challenges
 ### The Traditional Approaches
 
-Traditional weather prediction primarily relies on Numerical Weather Prediction (NWP) models, which use physics-based simulations to forecast future weather conditions. By solving complex equations governing atmospheric dynamics, these models provide highly accurate short- to medium-range forecasts.
+Traditional weather prediction primarily relies on Numerical Weather Prediction (NWP) models[2], which use physics-based simulations to forecast future weather conditions. By solving complex equations governing atmospheric dynamics, these models provide highly accurate short- to medium-range forecasts.
 
 Despite their effectiveness, NWP models come with significant challenges. One of the biggest drawbacks is computational cost. High-fidelity simulations require immense computing power, often relying on supercomputers to run effectively. Additionally, sensitivity to initial conditions poses a fundamental limitation. Small errors in the initial weather state can grow exponentially, leading to inaccurate long-term forecasts. As a result, reliable forecasting is typically limited to about six days, beyond which predictions become increasingly uncertain.
 
 <p align="center">
   <img src="assets/images/NWP.png" alt="Weather models use systems of differential equations based on physics, including fluid motion, thermodynamics, and radiative transfer. A 3D grid divides the Earth for calculations." width="500">
   <br>
-  <em style="color: grey;">Figure: Traditional weather models simulate atmospheric dynamics using physics-based equations on a 3D grid, where complex equations are solved for each grid cell, along with calculations for interactions with neighboring cells. </em>
+  <em style="color: grey;">Figure: Traditional weather models simulate atmospheric dynamics using physics-based equations on a 3D grid, where complex equations are solved for each grid cell, along with calculations for interactions with neighboring cells. Source [2]</em>
 </p>
 
 
@@ -28,7 +28,7 @@ Despite their effectiveness, NWP models come with significant challenges. One of
 ### Why Deep Learning?
 Deep learning has emerged as a promising alternative to traditional Numerical Weather Prediction (NWP) models by learning patterns from historical weather data rather than explicitly solving complex physics equations. This approach significantly reduces computational costs, making them more scalable and efficient. Additionally, these models excel at capturing intricate relationships between weather variables, leveraging vast datasets to uncover patterns and correlations.
 
-Several deep learning models have been developed for weather and climate prediction, each leveraging different architectures to enhance forecasting capabilities. **FourCastNet**, a Fourier-based neural network model, specializes in global weather forecasting. **ClimaX**, a transformer-based model, is designed for climate modeling and general-purpose weather forecasting. **Pangu-Weather**, another deep learning-based model, utilizes 3D Earth-specific transformer networks to achieve high-resolution predictions. 
+Several deep learning models have been developed for weather and climate prediction, each leveraging different architectures to enhance forecasting capabilities. **FourCastNet**[4], a Fourier-based neural network model, specializes in global weather forecasting. **ClimaX**[3], a transformer-based model, is designed for climate modeling and general-purpose weather forecasting. **Pangu-Weather**[8], another deep learning-based model, utilizes 3D Earth-specific transformer networks to achieve high-resolution predictions. 
 
 While these models demonstrate the potential of deep learning in weather forecasting, they still suffer from key limitations. Many function as black-box models, making it difficult to interpret how they generate predictions. Additionally, most data-driven models do not explicitly incorporate physical constraints, leading to physically inconsistent or unrealistic forecasts. Another major drawback is uncertainty estimation—most deep learning approaches do not quantify uncertainty, making it difficult to assess the reliability of predictions. 
 
@@ -37,7 +37,7 @@ These limitations highlight the need for hybrid approaches that integrate deep l
 <p align="center">
   <img src="assets/images/PINN.png" alt="The intersection of Physics and Neural Networks gives rise to Physics-Informed Neural Networks (PINNs), combining the interpretability of physics-based models with the efficiency of neural networks." width="400">
   <br>
-  <em style="color: grey;">Figure: The intersection of Physics and Neural Networks gives rise to Physics-Informed Neural Networks (PINNs), combining the interpretability of physics-based models with the efficiency of neural networks.</em>
+  <em style="color: grey;">Figure: The intersection of Physics and Neural Networks gives rise to Physics-Informed Neural Networks (PINNs), combining the interpretability of physics-based models with the efficiency of neural networks. Source [5]</em>
 </p>
 
 
@@ -90,7 +90,7 @@ The emission model outputs two key elements: bias and variance. The bias capture
 <p align="center">
   <img src="assets/images/ClimODE_full_pipeline.png" alt="The full pipeline of ClimODE demonstrates its architecture, consisting of an Initial Velocity module, an Advection ODE model, and an Emission Model. The Advection ODE incorporates convolutional and attention-based mechanisms to model the weather variables. Outputs include velocity and weather states for subsequent time steps." width="800">
   <br>
-  <em style="color: grey;">Figure: The full ClimODE pipeline</em>
+  <em style="color: grey;">Figure: The full ClimODE pipeline. Source [1]</em>
 </p>
 
 
@@ -98,7 +98,7 @@ The emission model outputs two key elements: bias and variance. The bias capture
 
 #### PDE-to-ODE Conversion
 
-One of the key contributions of ClimODE is its ability to simplify the traditionally complex numerical weather prediction pipeline. Conventional methods rely on solving computationally intensive partial differential equations (PDEs) to simulate weather patterns. In contrast, ClimODE applies methods discussed in prior research (Schiesser, 2012; Iakovlev et al., 2021) to reformulate these PDEs as a system of first-order ordinary differential equations (ODEs). This transformation drastically reduces computational costs, making weather forecasting scalable and accessible without sacrificing accuracy. Using numerical solvers like Runge-Kutta, ClimODE handles the reduced ODE system efficiently, offering a computational advantage while staying true to the underlying physics.
+One of the key contributions of ClimODE is its ability to simplify the traditionally complex numerical weather prediction pipeline. Conventional methods rely on solving computationally intensive partial differential equations (PDEs) to simulate weather patterns. In contrast, ClimODE applies methods discussed in prior research (Schiesser, 2012; Iakovlev et al., 2021) to reformulate these PDEs as a system of first-order ordinary differential equations (ODEs). This transformation drastically reduces computational costs, making weather forecasting scalable and accessible without sacrificing accuracy. Using numerical solvers like Runge-Kutta[6], ClimODE handles the reduced ODE system efficiently, offering a computational advantage while staying true to the underlying physics.
 
 #### Modeling Weather as a Continuous Spatio-Temporal System
 
@@ -120,7 +120,7 @@ Performance comparisons were conducted using two primary evaluation metrics: Lat
 
 ### Dataset
 
-ClimODE was trained and evaluated using a preprocessed ERA5 dataset, sourced from WeatherBench. The dataset contains meteorological variables at a resolution of 5.625° and spans 6-hour increments for precise temporal modeling. 
+ClimODE was trained and evaluated using a preprocessed ERA5 dataset, sourced from WeatherBench[9]. The dataset contains meteorological variables at a resolution of 5.625° and spans 6-hour increments for precise temporal modeling. 
 
 The following five key meteorological variables were considered:
 - Ground temperature (t2m)
@@ -144,7 +144,7 @@ Additionally, ClimODE’s predictions are further validated through metrics such
 <p align="center">
   <img src="assets/images/Global_forecasting_result.png" alt="Global forecasting results comparing ClimODE against other models like NODE, ClimaX, FCN, and IFS. The metrics include RMSE and ACC for key meteorological variables such as z, v10, u10, t2m, and t, across different lead times. ClimODE demonstrates superior performance compared to neural methods while underperforming compared to IFS standards." width="800">
   <br>
-  <em style="color: grey;">Figure: Performance comparison of ClimODE and baseline models for RMSE and ACC metrics.</em>
+  <em style="color: grey;">Figure: Performance comparison of ClimODE and baseline models for RMSE and ACC metrics. Source [1]</em>
 </p>
 
 
@@ -164,19 +164,64 @@ Comparative analysis was done with FourCastNet, a data-driven model, which showe
 <p align="center">
   <img src="assets/images/Monthly_forecast_results.jpg" alt="Monthly forecasting results comparing ClimODE and FCN across variables such as z, t, t2m, u10, and v10. Metrics are plotted as RMSE over lead times of 1 to 4 months, with ClimODE consistently outperforming FCN, especially for extended lead times." width="800">
   <br>
-  <em style="color: grey;">Figure: Monthly Forecasting Results: Performance of ClimODE vs. FCN across key meteorological variables over different lead times. ClimODE outperforming FCN, especially for extended lead times</em>
+  <em style="color: grey;">Figure: Monthly Forecasting Results: Performance of ClimODE vs. FCN across key meteorological variables over different lead times. ClimODE outperforming FCN, especially for extended lead times. Source [1]</em>
 </p>
 
 
 ## Limitations and Future Work
 While ClimODE demonstrates impressive performance in weather prediction, it does have certain limitations. One notable drawback is that its accuracy still falls short compared to gold-standard numerical weather prediction models such as the Integrated Forecasting System (IFS). Additionally, ClimODE's evaluation has been geographically limited to regions like North America, South America, and Australia, leaving its performance in other areas, such as Europe and Asia, largely unexplored.
 
-Another significant limitation is the model's lack of explicit consideration for long-term climate phenomena, such as climate change. This is critical for practical applications like disaster mitigation and policy planning. Furthermore, as mentioned in other research(), ClimODE's performance in the subseasonal-to-seasonal (S2S) forecasting domain has been suboptimal.
+Another significant limitation is the model's lack of explicit consideration for long-term climate phenomena, such as climate change. This is critical for practical applications like disaster mitigation and policy planning. Furthermore, as mentioned in other research[10], ClimODE's performance in the subseasonal-to-seasonal (S2S) forecasting domain has been suboptimal.
 
-For future work, the authors propose incorporating mechanisms to account for climate change and extending their methods to additional datasets, such as those mentioned by Rasp et al. (2023), to better capture the dynamic nature of Earth's climate.
+For future work, the authors propose incorporating mechanisms to account for climate change and extending their methods to additional datasets, such as those mentioned by Rasp et al. (2023)[7], to better capture the dynamic nature of Earth's climate.
 
 ## Conclusion
 
-ClimODE presents a weather and climate forecasting model by combining physics-based principles with deep learning techniques. This innovative approach ensures computational efficiency by replacing complex Partial Differential Equations (PDEs) with simpler Ordinary Differential Equations (ODEs). Furthermore, ClimODE excels in handling uncertainties, offering reliable predictions and enhanced interpretability. Its capability to capture both global and local weather patterns demonstrates its versatility, while its performance metrics highlight its superiority over other competitive models like FourCastNet and ClimaX. These strengths position ClimODE as a promising tool for advancing the accuracy and practicality of climate forecasting.
+ClimODE introduces a novel approach to weather and climate forecasting by integrating physics-based principles with deep learning. By transforming the continuity equation from Partial Differential Equations (PDEs) into a system of Ordinary Differential Equations (ODEs), ClimODE significantly reduces computational costs while preserving physical consistency. Its uncertainty quantification enhances reliability by providing confidence intervals for predictions, improving interpretability. Additionally, ClimODE effectively captures both local and global weather patterns and demonstrates robustness in both short-term and long-term forecasting. Its strong performance against competitive models like FourCastNet and ClimaX highlights its potential as a scalable and physics-informed alternative to traditional forecasting methods, paving the way for more accurate and efficient climate modeling.
 
 ## References
+1. **ClimODE: Climate and weather forecasting with physics-informed neural ODEs** [PDF]  
+   Verma, Yogesh, Heinonen, Markus, and Garg, Vikas.  
+   *arXiv preprint arXiv:2404.10024*, 2024.
+
+2. **Numerical Weather Prediction** [HTML]  
+   Wikipedia.  
+   Available at: [https://en.wikipedia.org/wiki/Numerical_weather_prediction](https://en.wikipedia.org/wiki/Numerical_weather_prediction)
+
+3. **ClimaX: A foundation model for weather and climate** [PDF]  
+   Nguyen, Tung; Brandstetter, Johannes; Kapoor, Ashish; Gupta, Jayesh K.; Grover, Aditya.  
+   *arXiv preprint arXiv:2301.10343*. 2023.  
+   Available at: [https://arxiv.org/abs/2301.10343](https://arxiv.org/abs/2301.10343)
+
+4. **FourCastNet: A global data-driven high-resolution weather model using adaptive Fourier neural operators** [PDF]  
+   Pathak, Jaideep; Subramanian, Shashank; Harrington, Peter; Raja, Sanjeev; Chattopadhyay, Ashesh; Mardani, Morteza; Kurth, Thorsten; Hall, David; Li, Zongyi; Azizzadenesheli, Kamyar, et al.  
+   *arXiv preprint arXiv:2202.11214*. 2022.  
+   Available at: [https://arxiv.org/abs/2202.11214](https://arxiv.org/abs/2202.11214)
+
+5. **Unlocking the Potential of Physics-Informed Neural Networks (PINNs)** [HTML]  
+   Justy Gwen.  
+   *Medium*. Available at: [https://medium.com/@justygwen/unlocking-the-potential-of-physics-informed-neural-networks-pinns-68976b501415](https://medium.com/@justygwen/unlocking-the-potential-of-physics-informed-neural-networks-pinns-68976b501415)
+
+6. **Über die numerische Auflösung von Differentialgleichungen**  
+   Carl Runge.  
+   *Mathematische Annalen*, 46(2):167–178, 1895.
+
+7. **WeatherBench 2: A Benchmark for the Next Generation of Data-Driven Global Weather Models** [PDF]  
+   Stephan Rasp, Stephan Hoyer, Alexander Merose, Ian Langmore, Peter Battaglia, Tyler Russel, Alvaro Sanchez-Gonzalez, Vivian Yang, Rob Carver, Shreya Agrawal, et al.  
+   *arXiv preprint arXiv:2308.15560*, 2023.  
+   Available at: [https://arxiv.org/abs/2308.15560](https://arxiv.org/abs/2308.15560)
+
+8. **Pangu-Weather: A 3D High-Resolution Model for Fast and Accurate Global Weather Forecast** [PDF]  
+   Kaifeng Bi, Lingxi Xie, Hengheng Zhang, Xin Chen, Xiaotao Gu, and Qi Tian.  
+   *arXiv preprint arXiv:2211.02556*, 2022.  
+   Available at: [https://arxiv.org/abs/2211.02556](https://arxiv.org/abs/2211.02556)
+
+9. **WeatherBench: A Benchmark Data Set for Data-Driven Weather Forecasting** [PDF]  
+   Stephan Rasp, Peter D. Dueben, Sebastian Scher, Jonathan A. Weyn, Soukayna Mouatadid, and Nils Thuerey.  
+   *Journal of Advances in Modeling Earth Systems*, Vol. 12, No. 11, e2020MS002203, 2020.  
+   Available at: [https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2020MS002203](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2020MS002203)
+
+10. **Maximizing the Impact of Deep Learning on Subseasonal-to-Seasonal Climate Forecasting: The Essential Role of Optimization** [PDF]  
+   Yizhen Guo, Tian Zhou, Wanyi Jiang, Bo Wu, Liang Sun, and Rong Jin.  
+   *arXiv preprint arXiv:2411.16728*, 2024.  
+   Available at: [https://arxiv.org/abs/2411.16728](https://arxiv.org/abs/2411.16728)
