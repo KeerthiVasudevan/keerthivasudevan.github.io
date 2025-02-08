@@ -11,9 +11,9 @@ layout: default
 - [ClimODE](#climode)
   - [Overview](#overview)
   - [Core Methodology](#core-methodology)
-  - [Flow Velocity Model](#flow-velocity-model)
-  - [Advection Model](#advection-model)
-  - [Emission Model](#emission-model)
+  -   [Flow Velocity Model](#flow-velocity-model)
+  -   [Advection Model](#advection-model)
+  -   [Emission Model](#emission-model)
 - [Other Contributions](#other-contributions)
   - [PDE-to-ODE Conversion](#pde-to-ode-conversion)
   - [Modeling Weather as a Continuous Spatio-Temporal System](#modeling-weather-as-a-continuous-spatio-temporal-system)
@@ -73,7 +73,7 @@ These limitations highlight the need for hybrid approaches that integrate deep l
 <p align="center">
   <img src="assets/images/PINN.png" alt="The intersection of Physics and Neural Networks gives rise to Physics-Informed Neural Networks (PINNs), combining the interpretability of physics-based models with the efficiency of neural networks." width="400">
   <br>
-  <em style="color: grey;">Figure 2: This is just an image to keep you entertained as you read along :) Source [5]</em>
+  <em style="color: grey;">Figure 2: Source [5]</em>
 </p>
 
 
