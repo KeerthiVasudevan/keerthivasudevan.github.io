@@ -17,7 +17,7 @@ Despite their effectiveness, NWP models come with significant challenges. One of
 <p align="center">
   <img src="assets/images/NWP.png" alt="Weather models use systems of differential equations based on physics, including fluid motion, thermodynamics, and radiative transfer. A 3D grid divides the Earth for calculations." width="500">
   <br>
-  <em>Figure: Traditional weather models simulate atmospheric dynamics using physics-based equations on a 3D grid, where values are calculated within each grid cell, and interactions with neighboring grids are also accounted for. </em>
+  <em>Figure: Traditional weather models simulate atmospheric dynamics using physics-based equations on a 3D grid, where complex equations are solved for each grid cell, along with calculations for interactions with neighboring cells. </em>
 </p>
 
 
@@ -32,7 +32,7 @@ While these models demonstrate the potential of deep learning in weather forecas
 These limitations highlight the need for hybrid approaches that integrate deep learning with physics-based constraints, paving the way for **Physics-Informed Neural Networks (PINNs)**.
 
 <p align="center">
-  <img src="assets/images/PINN.png" alt="The intersection of Physics and Neural Networks gives rise to Physics-Informed Neural Networks (PINNs), combining the interpretability of physics-based models with the efficiency of neural networks." width="600">
+  <img src="assets/images/PINN.png" alt="The intersection of Physics and Neural Networks gives rise to Physics-Informed Neural Networks (PINNs), combining the interpretability of physics-based models with the efficiency of neural networks." width="400">
   <br>
   <em>Figure: The intersection of Physics and Neural Networks gives rise to Physics-Informed Neural Networks (PINNs), combining the interpretability of physics-based models with the efficiency of neural networks.</em>
 </p>
@@ -51,7 +51,7 @@ ClimODE also addresses the limitations of purely data-driven deep learning model
 As per statistical mechanics, weather can be seen as a spatial movement of quantities over time governed by the partial differential equation continuity equation.
 
 <p align="center">
-  <img src="assets/images/Continuity_eqn.png" alt="Continuity Equation: A foundational equation in weather modeling that describes the conservation of mass and movement of weather variables across time and space." width="800">
+  <img src="assets/images/Continuity_eqn.png" alt="Continuity Equation: A foundational equation in weather modeling that describes the conservation of mass and movement of weather variables across time and space." width="300">
   <br>
   <em>Figure: Continuity Equation</em>
 </p>
@@ -159,7 +159,7 @@ Comparative analysis was done with FourCastNet, a data-driven model, which showe
 
 
 <p align="center">
-  <img src="assets/images/Monthly_forcast_results.png" alt="Monthly forecasting results comparing ClimODE and FCN across variables such as z, t, t2m, u10, and v10. Metrics are plotted as RMSE over lead times of 1 to 4 months, with ClimODE consistently outperforming FCN, especially for extended lead times." width="800">
+  <img src="assets/images/Monthly_forecast_results.jpg" alt="Monthly forecasting results comparing ClimODE and FCN across variables such as z, t, t2m, u10, and v10. Metrics are plotted as RMSE over lead times of 1 to 4 months, with ClimODE consistently outperforming FCN, especially for extended lead times." width="800">
   <br>
   <em>Figure: Monthly Forecasting Results: Performance of ClimODE vs. FCN across key meteorological variables over different lead times. ClimODE outperforming FCN, especially for extended lead times</em>
 </p>
