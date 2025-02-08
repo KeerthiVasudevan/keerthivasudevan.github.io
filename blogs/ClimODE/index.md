@@ -2,6 +2,8 @@
 layout: default
 # title: ClimODE: Climate and Weather Forecasting With Physics-Informed Neural ODEs
 ---
+<link rel="stylesheet" href="/css/main.css">
+
 # ClimODE: Climate and Weather Forecasting With Physics-Informed Neural ODEs
 ## Introduction
 Weather forecasting is an essential aspect of modern life, influencing decisions on both personal and global scales. From planning a simple outdoor activity to issuing critical warnings for natural disasters like storms and heatwaves, accurate weather predictions are indispensable. Farmers rely on forecasts to optimize agricultural strategies, and industries such as aviation, logistics, and energy depend on reliable weather models for efficient operations.
