@@ -126,7 +126,7 @@ The following five key meteorological variables were considered:
 - Ground temperature (t2m)
 - Atmospheric temperature (t)
 - Geopotential (z)
-- Ground wind vectors (u10, v10 )
+- Ground wind vectors (u10, v10)
 
 <p align="center">
   <img src="assets/images/data.png" alt="Input data structure showing latitude-longitude grid with meteorological variables." width="450">
