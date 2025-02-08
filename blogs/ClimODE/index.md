@@ -130,6 +130,13 @@ The following five key meteorological variables were considered:
 - Geopotential (z)
 - Ground wind vectors (u10, v10)
 
+<p align="center">
+  <img src="assets/images/datat.png" alt="Input data structure showing latitude-longitude grid with meteorological variables." width="450">
+  <br>
+  <em>Figure: Visualization of the data from WeatherBench used in ClimODE, showing weather variables (e.g., temperature) distributed across a latitude-longitude grid at a specific time step. Each channel represents a single variable at a specific vertical level.</em>
+</p>
+
+
 The dataset was divided into distinct segments for training, validation, and testing purposes. Data from 2006 to 2015 was allocated for training the model, while the year 2016 was used for validation. The remaining years, 2017 and 2018, were reserved for testing to evaluate the model's performance on unseen data.
 
 ## Results
