@@ -8,3 +8,4 @@ title:
 remote_theme: daattali/beautiful-jekyll@6.0.1
 baseurl: "/blogs/ClimODE"
 url: "https://keerthivasudevan.github.io"
+root: /
