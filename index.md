@@ -1,5 +1,7 @@
-<!-- # ClimODE: Climate and Weather Forecasting With Physics-Informed Neural ODEs
-
+---
+layout: default
+title: ClimODE: Climate and Weather Forecasting With Physics-Informed Neural ODEs
+---
 ## Introduction
 Weather forecasting is an essential aspect of modern life, influencing decisions on both personal and global scales. From planning a simple outdoor activity to issuing critical warnings for natural disasters like storms and heatwaves, accurate weather predictions are indispensable. Farmers rely on forecasts to optimize agricultural strategies, and industries such as aviation, logistics, and energy depend on reliable weather models for efficient operations.
 
@@ -176,4 +178,4 @@ For future work, the authors propose incorporating mechanisms to account for cli
 
 ClimODE presents a weather and climate forecasting model by combining physics-based principles with deep learning techniques. This innovative approach ensures computational efficiency by replacing complex Partial Differential Equations (PDEs) with simpler Ordinary Differential Equations (ODEs). Furthermore, ClimODE excels in handling uncertainties, offering reliable predictions and enhanced interpretability. Its capability to capture both global and local weather patterns demonstrates its versatility, while its performance metrics highlight its superiority over other competitive models like FourCastNet and ClimaX. These strengths position ClimODE as a promising tool for advancing the accuracy and practicality of climate forecasting.
 
-## References -->
+## References
