@@ -8,7 +8,7 @@ Weather forecasting is an essential aspect of modern life, influencing decisions
 
 Traditionally, weather forecasting has been driven by complex physical simulations, which, while accurate, require immense computational resources. In contrast, deep learning models offer a more data-driven approach but often act as black boxes, failing to incorporate fundamental physical laws that govern weather dynamics.
 
-This blog explores **ClimODE**[1](#1), a novel climate and weather forecasting model that bridges the gap between traditional numerical methods and deep learning. By integrating physics-based constraints with deep learning techniques, ClimODE offers a computationally efficient and physically consistent approach to long-term weather and climate prediction.
+This blog explores **ClimODE**[1], a novel climate and weather forecasting model that bridges the gap between traditional numerical methods and deep learning. By integrating physics-based constraints with deep learning techniques, ClimODE offers a computationally efficient and physically consistent approach to long-term weather and climate prediction.
 
 ## Background and Challenges
 ### The Traditional Approaches
@@ -180,25 +180,26 @@ For future work, the authors propose incorporating mechanisms to account for cli
 ClimODE introduces a novel approach to weather and climate forecasting by integrating physics-based principles with deep learning. By transforming the continuity equation from Partial Differential Equations (PDEs) into a system of Ordinary Differential Equations (ODEs), ClimODE significantly reduces computational costs while preserving physical consistency. Its uncertainty quantification enhances reliability by providing confidence intervals for predictions, improving interpretability. Additionally, ClimODE effectively captures both local and global weather patterns and demonstrates robustness in both short-term and long-term forecasting. Its strong performance against competitive models like FourCastNet and ClimaX highlights its potential as a scalable and physics-informed alternative to traditional forecasting methods, paving the way for more accurate and efficient climate modeling.
 
 ## References
-1. **ClimODE: Climate and weather forecasting with physics-informed neural ODEs** [PDF]  
+1. **ClimODE: Climate and weather forecasting with physics-informed neural ODEs** 
    Verma, Yogesh, Heinonen, Markus, and Garg, Vikas.  
    *arXiv preprint arXiv:2404.10024*, 2024.
+   Available at: [https://arxiv.org/abs/2404.10024](https://arxiv.org/abs/2404.10024)
 
-2. **Numerical Weather Prediction** [HTML]  
+2. **Numerical Weather Prediction** 
    Wikipedia.  
    Available at: [https://en.wikipedia.org/wiki/Numerical_weather_prediction](https://en.wikipedia.org/wiki/Numerical_weather_prediction)
 
-3. **ClimaX: A foundation model for weather and climate** [PDF]  
+3. **ClimaX: A foundation model for weather and climate**  
    Nguyen, Tung; Brandstetter, Johannes; Kapoor, Ashish; Gupta, Jayesh K.; Grover, Aditya.  
    *arXiv preprint arXiv:2301.10343*. 2023.  
    Available at: [https://arxiv.org/abs/2301.10343](https://arxiv.org/abs/2301.10343)
 
-4. **FourCastNet: A global data-driven high-resolution weather model using adaptive Fourier neural operators** [PDF]  
+4. **FourCastNet: A global data-driven high-resolution weather model using adaptive Fourier neural operators**  
    Pathak, Jaideep; Subramanian, Shashank; Harrington, Peter; Raja, Sanjeev; Chattopadhyay, Ashesh; Mardani, Morteza; Kurth, Thorsten; Hall, David; Li, Zongyi; Azizzadenesheli, Kamyar, et al.  
    *arXiv preprint arXiv:2202.11214*. 2022.  
    Available at: [https://arxiv.org/abs/2202.11214](https://arxiv.org/abs/2202.11214)
 
-5. **Unlocking the Potential of Physics-Informed Neural Networks (PINNs)** [HTML]  
+5. **Unlocking the Potential of Physics-Informed Neural Networks (PINNs)** 
    Justy Gwen.  
    *Medium*. Available at: [https://medium.com/@justygwen/unlocking-the-potential-of-physics-informed-neural-networks-pinns-68976b501415](https://medium.com/@justygwen/unlocking-the-potential-of-physics-informed-neural-networks-pinns-68976b501415)
 
@@ -206,22 +207,22 @@ ClimODE introduces a novel approach to weather and climate forecasting by integr
    Carl Runge.  
    *Mathematische Annalen*, 46(2):167–178, 1895.
 
-7. **WeatherBench 2: A Benchmark for the Next Generation of Data-Driven Global Weather Models** [PDF]  
+7. **WeatherBench 2: A Benchmark for the Next Generation of Data-Driven Global Weather Models** 
    Stephan Rasp, Stephan Hoyer, Alexander Merose, Ian Langmore, Peter Battaglia, Tyler Russel, Alvaro Sanchez-Gonzalez, Vivian Yang, Rob Carver, Shreya Agrawal, et al.  
    *arXiv preprint arXiv:2308.15560*, 2023.  
    Available at: [https://arxiv.org/abs/2308.15560](https://arxiv.org/abs/2308.15560)
 
-8. **Pangu-Weather: A 3D High-Resolution Model for Fast and Accurate Global Weather Forecast** [PDF]  
+8. **Pangu-Weather: A 3D High-Resolution Model for Fast and Accurate Global Weather Forecast**   
    Kaifeng Bi, Lingxi Xie, Hengheng Zhang, Xin Chen, Xiaotao Gu, and Qi Tian.  
    *arXiv preprint arXiv:2211.02556*, 2022.  
    Available at: [https://arxiv.org/abs/2211.02556](https://arxiv.org/abs/2211.02556)
 
-9. **WeatherBench: A Benchmark Data Set for Data-Driven Weather Forecasting** [PDF]  
+9. **WeatherBench: A Benchmark Data Set for Data-Driven Weather Forecasting** 
    Stephan Rasp, Peter D. Dueben, Sebastian Scher, Jonathan A. Weyn, Soukayna Mouatadid, and Nils Thuerey.  
    *Journal of Advances in Modeling Earth Systems*, Vol. 12, No. 11, e2020MS002203, 2020.  
    Available at: [https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2020MS002203](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2020MS002203)
 
-10. **Maximizing the Impact of Deep Learning on Subseasonal-to-Seasonal Climate Forecasting: The Essential Role of Optimization** [PDF]  
+10. **Maximizing the Impact of Deep Learning on Subseasonal-to-Seasonal Climate Forecasting: The Essential Role of Optimization**  
    Yizhen Guo, Tian Zhou, Wanyi Jiang, Bo Wu, Liang Sun, and Rong Jin.  
    *arXiv preprint arXiv:2411.16728*, 2024.  
    Available at: [https://arxiv.org/abs/2411.16728](https://arxiv.org/abs/2411.16728)
