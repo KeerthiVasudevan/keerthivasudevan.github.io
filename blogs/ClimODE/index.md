@@ -131,9 +131,9 @@ The following five key meteorological variables were considered:
 - Ground wind vectors (u10, v10)
 
 <p align="center">
-  <img src="assets/images/datat.png" alt="Input data structure showing latitude-longitude grid with meteorological variables." width="450">
+  <img src="assets/images/data.png" alt="Input data structure showing latitude-longitude grid with meteorological variables." width="450">
   <br>
-  <em>Figure: Visualization of the data from WeatherBench used in ClimODE, showing weather variables (e.g., temperature) distributed across a latitude-longitude grid at a specific time step. Each channel represents a single variable at a specific vertical level.</em>
+  <em>Figure: Visualization of the data from WeatherBench used in ClimODE, showing weather variables (e.g., temperature) distributed across a latitude-longitude grid at a specific time step. Each channel represents a single variable at a specific vertical level. Source [9]</em>
 </p>
 
 
