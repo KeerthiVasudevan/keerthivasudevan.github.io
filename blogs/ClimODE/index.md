@@ -2,6 +2,7 @@
 layout: default
 # title: ClimODE: Climate and Weather Forecasting With Physics-Informed Neural ODEs
 ---
+{% include toc.html html=content %}
 
 # ClimODE: Climate and Weather Forecasting With Physics-Informed Neural ODEs
 ## Introduction
