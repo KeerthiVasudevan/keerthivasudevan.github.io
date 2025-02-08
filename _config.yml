@@ -7,8 +7,4 @@ title:
 # theme: minima
 remote_theme: daattali/beautiful-jekyll@6.0.1
 baseurl: "/blogs/ClimODE"
-defaults:
-  - scope:
-      path: ""
-    values:
-      layout: default
+url: "https://keerthivasudevan.github.io"
