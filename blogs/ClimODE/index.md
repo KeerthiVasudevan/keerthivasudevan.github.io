@@ -29,8 +29,11 @@ Despite their effectiveness, NWP models come with significant challenges. One of
 Deep learning has emerged as a promising alternative to traditional Numerical Weather Prediction (NWP) models by learning patterns from historical weather data rather than explicitly solving complex physics equations. This approach significantly reduces computational costs, making them more scalable and efficient. Additionally, these models excel at capturing intricate relationships between weather variables, leveraging vast datasets to uncover patterns and correlations.
 
 Several deep learning models have been developed for weather and climate prediction, each employing different architectures to enhance forecasting capabilities. Examples of such models include:
+
 **FourCastNet**[4], a Fourier-based neural network model that specializes in global weather forecasting. 
+
 **ClimaX**[3], a transformer-based model, designed for climate modeling and general-purpose weather forecasting.
+
 **Pangu-Weather**[8], another deep learning-based model, that utilizes 3D Earth-specific transformer networks to achieve high-resolution predictions. 
 
 While these models demonstrate the potential of deep learning in weather forecasting, they still suffer from key limitations. Many function as black-box models, making it difficult to interpret how they generate predictions. Additionally, most data-driven models do not explicitly incorporate physical constraints, leading to physically inconsistent or unrealistic forecasts. Another major drawback is uncertainty estimation—most deep learning approaches do not quantify uncertainty, making it difficult to assess the reliability of predictions. 
