@@ -3,6 +3,36 @@ layout: default
 # title: ClimODE: Climate and Weather Forecasting With Physics-Informed Neural ODEs
 ---
 # ClimODE: Merging Physics and AI for Weather and Climate Forecasting
+## Table of Contents
+- [Introduction](#introduction)
+- [Background and Challenges](#background-and-challenges)
+  - [The Traditional Approaches](#the-traditional-approaches)
+  - [Why Deep Learning?](#why-deep-learning)
+- [ClimODE](#climode)
+  - [Overview](#overview)
+  - [Core Methodology](#core-methodology)
+  - [Flow Velocity Model](#flow-velocity-model)
+  - [Advection Model](#advection-model)
+  - [Emission Model](#emission-model)
+- [Other Contributions](#other-contributions)
+  - [PDE-to-ODE Conversion](#pde-to-ode-conversion)
+  - [Modeling Weather as a Continuous Spatio-Temporal System](#modeling-weather-as-a-continuous-spatio-temporal-system)
+  - [Initial Velocity Inference](#initial-velocity-inference)
+- [Experiments](#experiments)
+  - [Benchmarking Models](#benchmarking-models)
+  - [Evaluation Metrics](#evaluation-metrics)
+  - [Dataset](#dataset)
+- [Results](#results)
+  - [Global Forecasting](#global-forecasting)
+  - [Local Forecasting](#local-forecasting)
+  - [Climate Forecasting](#climate-forecasting)
+- [Ablation Studies](#ablation-studies)
+  - [Effect of Emission Model](#effect-of-emission-model)
+  - [Effect of Individual Components](#effect-of-individual-components)
+- [Limitations and Future Work](#limitations-and-future-work)
+- [Conclusion](#conclusion)
+- [References](#references)
+
 ## Introduction
 Weather forecasting is an essential aspect of modern life, influencing decisions on both personal and global scales. From planning a simple outdoor activity to issuing critical warnings for natural disasters like storms and heatwaves, accurate weather predictions are indispensable. Farmers rely on forecasts to optimize agricultural strategies, and industries such as aviation, logistics, and energy depend on reliable weather models for efficient operations.
 
@@ -43,7 +73,7 @@ These limitations highlight the need for hybrid approaches that integrate deep l
 <p align="center">
   <img src="assets/images/PINN.png" alt="The intersection of Physics and Neural Networks gives rise to Physics-Informed Neural Networks (PINNs), combining the interpretability of physics-based models with the efficiency of neural networks." width="400">
   <br>
-  <em style="color: grey;">Figure 2: This is just an image to keep you entertained as you read along. Source [5]</em>
+  <em style="color: grey;">Figure 2: This is just an image to keep you entertained as you read along :) Source [5]</em>
 </p>
 
 
