@@ -20,7 +20,7 @@ Despite their effectiveness, NWP models come with significant challenges. One of
 <p align="center">
   <img src="assets/images/NWP.png" alt="Weather models use systems of differential equations based on physics, including fluid motion, thermodynamics, and radiative transfer. A 3D grid divides the Earth for calculations." width="500">
   <br>
-  <em style="color: grey;">Figure: Traditional weather models simulate atmospheric dynamics using physics-based equations on a 3D grid, where complex equations are solved for each grid cell, along with calculations for interactions with neighboring cells. Source [2]</em>
+  <em style="color: grey;">Figure 1: Traditional weather models simulate atmospheric dynamics using physics-based equations on a 3D grid, where complex equations are solved for each grid cell, along with calculations for interactions with neighboring cells. Source [2]</em>
 </p>
 
 
@@ -37,7 +37,7 @@ These limitations highlight the need for hybrid approaches that integrate deep l
 <p align="center">
   <img src="assets/images/PINN.png" alt="The intersection of Physics and Neural Networks gives rise to Physics-Informed Neural Networks (PINNs), combining the interpretability of physics-based models with the efficiency of neural networks." width="400">
   <br>
-  <em style="color: grey;">Figure: The intersection of Physics and Neural Networks gives rise to Physics-Informed Neural Networks (PINNs), combining the interpretability of physics-based models with the efficiency of neural networks. Source [5]</em>
+  <em style="color: grey;">Figure 2: The intersection of Physics and Neural Networks gives rise to Physics-Informed Neural Networks (PINNs), combining the interpretability of physics-based models with the efficiency of neural networks. Source [5]</em>
 </p>
 
 
@@ -56,7 +56,7 @@ As per statistical mechanics, weather can be seen as a spatial movement of quant
 <p align="center">
   <img src="assets/images/Continuity_eqn.png" alt="Continuity Equation: A foundational equation in weather modeling that describes the conservation of mass and movement of weather variables across time and space." width="400">
   <br>
-  <em style="color: grey;">Figure: Continuity Equation</em>
+  <em style="color: grey;">Figure 3: Continuity Equation</em>
 </p>
 
 ClimODE transforms the continuity equation into a physics-informed neural network by breaking it down into dedicated components, each handling a specific term of the equation:
@@ -90,7 +90,7 @@ The emission model outputs two key elements: bias and variance. The bias capture
 <p align="center">
   <img src="assets/images/ClimODE_full_pipeline.png" alt="The full pipeline of ClimODE demonstrates its architecture, consisting of an Initial Velocity module, an Advection ODE model, and an Emission Model. The Advection ODE incorporates convolutional and attention-based mechanisms to model the weather variables. Outputs include velocity and weather states for subsequent time steps." width="800">
   <br>
-  <em style="color: grey;">Figure: The full ClimODE pipeline. Source [1]</em>
+  <em style="color: grey;">Figure 4: The full ClimODE pipeline. Source [1]</em>
 </p>
 
 
@@ -131,7 +131,7 @@ The following five key meteorological variables were considered:
 <p align="center">
   <img src="assets/images/data.png" alt="Input data structure showing latitude-longitude grid with meteorological variables." width="450">
   <br>
-  <em style="color: grey;>Figure: Visualization of the data from WeatherBench used in ClimODE, showing weather variables (e.g., temperature) distributed across a latitude-longitude grid at a specific time step. Each channel represents a single variable at a specific vertical level. Source [9]</em>
+  <em style="color: grey;">Figure 5: Visualization of the data from WeatherBench used in ClimODE, showing weather variables (e.g., temperature) distributed across a latitude-longitude grid at a specific time step. Each channel represents a single variable at a specific vertical level. Source [9]</em>
 </p>
 
 
@@ -151,7 +151,7 @@ Additionally, ClimODE’s predictions are further validated through metrics such
 <p align="center">
   <img src="assets/images/Global_forecasting_result.png" alt="Global forecasting results comparing ClimODE against other models like NODE, ClimaX, FCN, and IFS. The metrics include RMSE and ACC for key meteorological variables such as z, v10, u10, t2m, and t, across different lead times. ClimODE demonstrates superior performance compared to neural methods while underperforming compared to IFS standards." width="800">
   <br>
-  <em style="color: grey;">Figure: Performance comparison of ClimODE and baseline models for RMSE and ACC metrics. Source [1]</em>
+  <em style="color: grey;">Figure 6: Performance comparison of ClimODE and baseline models for RMSE and ACC metrics. Source [1]</em>
 </p>
 
 
@@ -167,11 +167,42 @@ Climate forecasting involves extended weather prediction over longer durations, 
 
 Comparative analysis was done with FourCastNet, a data-driven model, which showed ClimODE's superior performance in predicting monthly averages, as demonstrated by metrics like Latitude-weighted RMSE and Anomaly Correlation Coefficient (ACC). ClimODE effectively captured long-term climate patterns with improved accuracy, highlighting its efficacy in climate forecasting along with short-term weather predictions.
 
+## Ablation Studies
+
+### Effect of Emission Model
+
+The emission model effectively captures systematic deviations caused by the day-night cycle, as shown by the bias in Figure 7a. Positive bias is observed over the Pacific Ocean, reflecting daytime conditions, while negative bias around Europe and Africa signifies nighttime. Figure 7b further highlights that uncertainty is higher over land and in northern regions, demonstrating the model's ability to estimate variance accurately.
+
+<p align="center">
+  <img src="assets/images/ablation_components.png" alt="Effect of Emission Model: Bias and Uncertainty Maps" width="800">
+  <br>
+  <em>Figure 7: Model prediction for ground temperature(t2m). (a) Bias, showing systematic deviations due to the day-night cycle; and (b) Uncertainty, highlighting higher values over land and northern regions at 12:00 AM UTC for .</em>
+</p>
+
+### Effect of Individual Components
+
+The aim of this study was to evaluate the contributions of individual components in ClimODE's architecture. The model was decomposed into the following parts:
+
+- **NODE**: A free-form second-order neural ODE.  
+- **Adv**: The advection ODE, responsible for modeling transport and compression.  
+- **Att**: The global attention mechanism, designed to capture large-scale dependencies.  
+- **ClimODE**: Combines all the above components, including the emission model.  
+<p align="center">
+  <img src="assets/images/ablation_emission.png" alt="Performance comparison of NODE, NODE+Adv, NODE+Adv+Att, and ClimODE using RMSE as the evaluation metric. The graph shows that the advection and emission models contribute the most to performance improvements, while the global attention mechanism has the least impact." width="800">
+  <br>
+  <em>Figure 8: Effect of individual components on ClimODE's performance</em>
+</p>
+
+
+The performance of **NODE**, **NODE+Adv**, **NODE+Adv+Att**, and **ClimODE** was compared using RMSE as the evaluation metric. The results showed that all components contribute significantly to overall performance. The advection and emission models had the most significant impact, while the global attention mechanism contributed the least.
+
+
+
 
 <p align="center">
   <img src="assets/images/Monthly_forecast_results.jpg" alt="Monthly forecasting results comparing ClimODE and FCN across variables such as z, t, t2m, u10, and v10. Metrics are plotted as RMSE over lead times of 1 to 4 months, with ClimODE consistently outperforming FCN, especially for extended lead times." width="800">
   <br>
-  <em style="color: grey;">Figure: Monthly Forecasting Results: Performance of ClimODE vs. FCN across key meteorological variables over different lead times. ClimODE outperforming FCN, especially for extended lead times. Source [1]</em>
+  <em style="color: grey;">Figure 9: Monthly Forecasting Results: Performance of ClimODE vs. FCN across key meteorological variables over different lead times. ClimODE outperforming FCN, especially for extended lead times. Source [1]</em>
 </p>
 
 
