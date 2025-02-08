@@ -17,7 +17,7 @@ Despite their effectiveness, NWP models come with significant challenges. One of
 <p align="center">
   <img src="assets/images/NWP.png" alt="Weather models use systems of differential equations based on physics, including fluid motion, thermodynamics, and radiative transfer. A 3D grid divides the Earth for calculations." width="500">
   <br>
-  <em>Figure: Traditional weather models simulate atmospheric dynamics using physics-based equations on a 3D grid, where complex equations are solved for each grid cell, along with calculations for interactions with neighboring cells. </em>
+  <em style="color: grey;">Figure: Traditional weather models simulate atmospheric dynamics using physics-based equations on a 3D grid, where complex equations are solved for each grid cell, along with calculations for interactions with neighboring cells. </em>
 </p>
 
 
@@ -34,7 +34,7 @@ These limitations highlight the need for hybrid approaches that integrate deep l
 <p align="center">
   <img src="assets/images/PINN.png" alt="The intersection of Physics and Neural Networks gives rise to Physics-Informed Neural Networks (PINNs), combining the interpretability of physics-based models with the efficiency of neural networks." width="400">
   <br>
-  <em>Figure: The intersection of Physics and Neural Networks gives rise to Physics-Informed Neural Networks (PINNs), combining the interpretability of physics-based models with the efficiency of neural networks.</em>
+  <em style="color: grey;">Figure: The intersection of Physics and Neural Networks gives rise to Physics-Informed Neural Networks (PINNs), combining the interpretability of physics-based models with the efficiency of neural networks.</em>
 </p>
 
 
@@ -51,9 +51,9 @@ ClimODE also addresses the limitations of purely data-driven deep learning model
 As per statistical mechanics, weather can be seen as a spatial movement of quantities over time governed by the partial differential equation continuity equation.
 
 <p align="center">
-  <img src="assets/images/Continuity_eqn.png" alt="Continuity Equation: A foundational equation in weather modeling that describes the conservation of mass and movement of weather variables across time and space." width="300">
+  <img src="assets/images/Continuity_eqn.png" alt="Continuity Equation: A foundational equation in weather modeling that describes the conservation of mass and movement of weather variables across time and space." width="400">
   <br>
-  <em>Figure: Continuity Equation</em>
+  <em style="color: grey;">Figure: Continuity Equation</em>
 </p>
 
 ClimODE transforms the continuity equation into a physics-informed neural network by breaking it down into dedicated components, each handling a specific term of the equation:
@@ -87,7 +87,7 @@ The emission model outputs two key elements: bias and variance. The bias capture
 <p align="center">
   <img src="assets/images/ClimODE_full_pipeline.png" alt="The full pipeline of ClimODE demonstrates its architecture, consisting of an Initial Velocity module, an Advection ODE model, and an Emission Model. The Advection ODE incorporates convolutional and attention-based mechanisms to model the weather variables. Outputs include velocity and weather states for subsequent time steps." width="800">
   <br>
-  <em>Figure: The full ClimODE pipeline</em>
+  <em style="color: grey;">Figure: The full ClimODE pipeline</em>
 </p>
 
 
@@ -141,7 +141,7 @@ Additionally, ClimODE’s predictions are further validated through metrics such
 <p align="center">
   <img src="assets/images/Global_forecasting_result.png" alt="Global forecasting results comparing ClimODE against other models like NODE, ClimaX, FCN, and IFS. The metrics include RMSE and ACC for key meteorological variables such as z, v10, u10, t2m, and t, across different lead times. ClimODE demonstrates superior performance compared to neural methods while underperforming compared to IFS standards." width="800">
   <br>
-  <em>Figure: Performance comparison of ClimODE and baseline models for RMSE and ACC metrics.</em>
+  <em style="color: grey;">Figure: Performance comparison of ClimODE and baseline models for RMSE and ACC metrics.</em>
 </p>
 
 
@@ -161,7 +161,7 @@ Comparative analysis was done with FourCastNet, a data-driven model, which showe
 <p align="center">
   <img src="assets/images/Monthly_forecast_results.jpg" alt="Monthly forecasting results comparing ClimODE and FCN across variables such as z, t, t2m, u10, and v10. Metrics are plotted as RMSE over lead times of 1 to 4 months, with ClimODE consistently outperforming FCN, especially for extended lead times." width="800">
   <br>
-  <em>Figure: Monthly Forecasting Results: Performance of ClimODE vs. FCN across key meteorological variables over different lead times. ClimODE outperforming FCN, especially for extended lead times</em>
+  <em style="color: grey;">Figure: Monthly Forecasting Results: Performance of ClimODE vs. FCN across key meteorological variables over different lead times. ClimODE outperforming FCN, especially for extended lead times</em>
 </p>
 
 
