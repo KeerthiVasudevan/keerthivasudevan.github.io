@@ -8,5 +8,5 @@ title:
 # description: A deep dive into ClimODE's innovative approach to weather forecasting.
 # theme: minima
 remote_theme: daattali/beautiful-jekyll@6.0.1
-baseurl: /
+baseurl: "/blogs/ClimODE"
 url: "https://keerthivasudevan.github.io"
