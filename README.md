@@ -14,6 +14,15 @@ Traditional weather prediction primarily relies on Numerical Weather Prediction 
 
 Despite their effectiveness, NWP models come with significant challenges. One of the biggest drawbacks is computational cost. High-fidelity simulations require immense computing power, often relying on supercomputers to run effectively. Additionally, sensitivity to initial conditions poses a fundamental limitation. Small errors in the initial weather state can grow exponentially, leading to inaccurate long-term forecasts. As a result, reliable forecasting is typically limited to about six days, beyond which predictions become increasingly uncertain.
 
+![Weather models use systems of differential equations based on physics, including fluid motion, thermodynamics, and radiative transfer. A 3D grid divides the Earth for calculations.](assets/images/NWP.png)
+
+<p align="center">
+  <img src="assets/images/NWP.png" alt="Weather models use systems of differential equations based on physics, including fluid motion, thermodynamics, and radiative transfer. A 3D grid divides the Earth for calculations." width="600">
+  <br>
+  <em>Figure: Traditional weather models simulate atmospheric dynamics using physics-based equations on a 3D grid.</em>
+</p>
+
+
 
 ### Why Deep Learning?
 Deep learning has emerged as a promising alternative to traditional Numerical Weather Prediction (NWP) models by learning patterns from historical weather data rather than explicitly solving complex physics equations. This approach significantly reduces computational costs, making them more scalable and efficient. Additionally, these models excel at capturing intricate relationships between weather variables, leveraging vast datasets to uncover patterns and correlations.
@@ -23,6 +32,8 @@ Several deep learning models have been developed for weather and climate predict
 While these models demonstrate the potential of deep learning in weather forecasting, they still suffer from key limitations. Many function as black-box models, making it difficult to interpret how they generate predictions. Additionally, most data-driven models do not explicitly incorporate physical constraints, leading to physically inconsistent or unrealistic forecasts. Another major drawback is uncertainty estimation—most deep learning approaches do not quantify uncertainty, making it difficult to assess the reliability of predictions. 
 
 These limitations highlight the need for hybrid approaches that integrate deep learning with physics-based constraints, paving the way for **Physics-Informed Neural Networks (PINNs)**.
+
+![Combining physics with deep learning](assets/images/PINN.png)
 
 
 ## ClimODE
@@ -37,15 +48,15 @@ ClimODE also addresses the limitations of purely data-driven deep learning model
 
 As per statistical mechanics, weather can be seen as a spatial movement of quantities over time governed by the partial differential equation continuity equation.
 
-![Continuity Equation](link_to_image)
+![Continuity Equation](assets/images/Continuity_eqn.png)
 
 ClimODE transforms the continuity equation into a physics-informed neural network by breaking it down into dedicated components, each handling a specific term of the equation:
 
-- **Time Evolution (dudt)**: This term represents how weather variables like temperature and humidity evolve over time. ClimODE captures this evolution through the Flow Velocity Model, which predicts the speed and direction of weather variable movement.
+- **Time Evolution**: This term represents how weather variables like temperature and humidity evolve over time. ClimODE captures this evolution through the Flow Velocity Model, which predicts the speed and direction of weather variable movement.
   
 - **Advection**: This term describes the transport and compression of weather variables due to fluid motion, such as wind. ClimODE models this through the Advection ODE Model, ensuring the smooth spatiotemporal flow of weather variables across regions.
 
-- **External Sources (s)**: This term accounts for external factors like energy variations caused by the day-night cycle or seasonal effects. ClimODE handles this through the Emission Model, which incorporates bias and variance to capture systematic deviations and uncertainties.
+- **External Sources**: This term accounts for external factors like energy variations caused by the day-night cycle or seasonal effects. ClimODE handles this through the Emission Model, which incorporates bias and variance to capture systematic deviations and uncertainties.
 
 #### Flow Velocity Model:
 
@@ -66,6 +77,15 @@ By explicitly integrating the physics of advection into its framework, ClimODE e
 If we limit weather modeling to the previously discussed components, two main problems emerge. First, the system is assumed to be deterministic, failing to account for uncertainties that can arise from various sources, such as unpredictable weather events or micro-scale dynamics. Second, the system is treated as closed, which does not allow for value changes like those caused by day-night cycles. To address these issues, ClimODE incorporates an additional step in its pipeline: the emission model.
 
 The emission model outputs two key elements: bias and variance. The bias captures systematic deviations in the model, such as predictable changes during day-night cycles, and corrects for these deviations to enhance prediction accuracy. Meanwhile, the variance quantifies the uncertainty in weather predictions. This includes aleatoric uncertainty, which stems from the inherent randomness of weather systems, such as sudden storms or small-scale turbulence, as well as epistemic uncertainty, which arises from limitations in the model’s knowledge or data, such as insufficient observations. By explicitly modeling these uncertainties, ClimODE makes its predictions more robust and reliable in real-world scenarios.
+
+![The full pipeline of ClimODE demonstrates its architecture, consisting of an Initial Velocity module, an Advection ODE model, and an Emission Model. The Advection ODE incorporates convolutional and attention-based mechanisms to model the transport and evolution of weather variables. Outputs include velocity and weather states for subsequent time steps.](assets/images/ClimODE_full_pipeline.png)
+
+<p align="center">
+  <img src="assets/images/ClimODE_full_pipeline.png" alt="The full pipeline of ClimODE demonstrates its architecture, consisting of an Initial Velocity module, an Advection ODE model, and an Emission Model. The Advection ODE incorporates convolutional and attention-based mechanisms to model the weather variables. Outputs include velocity and weather states for subsequent time steps." width="800">
+  <br>
+  <em>Figure: The full ClimODE pipeline</em>
+</p>
+
 
 ### Other Contributions
 
@@ -113,6 +133,15 @@ However, when compared to the gold-standard IFS, ClimODE falls short in overall 
 
 Additionally, ClimODE’s predictions are further validated through metrics such as Continuous Ranked Probability Score (CRPS), which highlights its ability to generate probabilistic forecasts that align closely with observed data. These results underscore the significance of incorporating physical principles for advancing weather modeling and long-term global forecasting.
 
+![Global forecasting results comparing ClimODE against other models like NODE, ClimaX, FCN, and IFS. The metrics include RMSE and ACC for key meteorological variables such as z, v10, u10, t2m, and t, across different lead times. ClimODE demonstrates superior performance compared to neural methods while approaching IFS standards.](assets/images/Global_Forecasting_Result.png)
+
+<p align="center">
+  <img src="assets/images/Global_Forecasting_Result.png" alt="Global forecasting results comparing ClimODE against other models like NODE, ClimaX, FCN, and IFS. The metrics include RMSE and ACC for key meteorological variables such as z, v10, u10, t2m, and t, across different lead times. ClimODE demonstrates superior performance compared to neural methods while approaching IFS standards." width="800">
+  <br>
+  <em>Figure: Performance comparison of ClimODE and baseline models for RMSE and ACC metrics.</em>
+</p>
+
+
 ### Local Forecasting
 
 For Local Forecasting, ClimODE's capability in regional weather prediction has been evaluated over specific bounding regions, namely North America, South America, and Australia. These regions were chosen due to their diverse meteorological characteristics, making them a challenging and meaningful test for regional weather forecasting.
@@ -124,6 +153,14 @@ The results reveal that ClimODE performs exceptionally well in forecasting key m
 Climate forecasting involves extended weather prediction over longer durations, for example spanning weeks or months. It aims to capture and predict average weather conditions over defined periods. ClimODE was evaluated for its climate forecasting capabilities by predicting monthly averages of key meteorological variables using the ERA5 dataset. For a fair comparison, the same dataset, variables, and hyperparameters were used.
 
 Comparative analysis was done with FourCastNet, a data-driven model, which showed ClimODE's superior performance in predicting monthly averages, as demonstrated by metrics like Latitude-weighted RMSE and Anomaly Correlation Coefficient (ACC). ClimODE effectively captured long-term climate patterns with improved accuracy, highlighting its efficacy in climate forecasting along with short-term weather predictions.
+
+![Monthly forecasting results comparing ClimODE and FCN across variables such as z, t, t2m, u10, and v10. Metrics are plotted as RMSE over lead times of 1 to 4 months, with ClimODE consistently outperforming FCN, especially for extended lead times.](assets/images/monthly-forecasting-results.png)
+
+<p align="center">
+  <img src="assets/images/monthly-forecasting-results.png" alt="Monthly forecasting results comparing ClimODE and FCN across variables such as z, t, t2m, u10, and v10. Metrics are plotted as RMSE over lead times of 1 to 4 months, with ClimODE consistently outperforming FCN, especially for extended lead times." width="800">
+  <br>
+  <em>Figure: Monthly Forecasting Results: Performance of ClimODE vs. FCN across key meteorological variables over different lead times.</em>
+</p>
 
 
 ## Limitations and Future Work
