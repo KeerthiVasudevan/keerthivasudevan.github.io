@@ -4,4 +4,5 @@
 # - jekyll-remote-theme # add this line to the plugins list if you already have one
 title: 
 # description: A deep dive into ClimODE's innovative approach to weather forecasting.
-theme: minima
+# theme: minima
+remote_theme: daattali/beautiful-jekyll@6.0.1
